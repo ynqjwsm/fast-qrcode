@@ -34,7 +34,6 @@ jobs:
         go build -ldflags "-s -w -extldflags -static -extldflags -static" ./...
         tar -czvf fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz fast-qrcode* default.conf
         rm -rf ./fast-qrcode*
-        echo "::set-env name=FIRMWARE::fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz"
         echo "::set-output name=status::success"
       env:
         APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
