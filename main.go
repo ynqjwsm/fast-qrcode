@@ -18,7 +18,7 @@ import (
 	"strings"
 )
 
-const VERSION = "v1.0.0"
+const VERSION = "v1.0.1"
 
 var (
 	configFile  string
