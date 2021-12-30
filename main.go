@@ -18,12 +18,15 @@ import (
 	"strings"
 )
 
+const VERSION = "v1.0.0"
+
 var (
-	configFile string
-	config     *Config
-	cache      *freecache.Cache
-	creator    *Creator
-	counter    *Counter
+	configFile  string
+	showVersion bool
+	config      *Config
+	cache       *freecache.Cache
+	creator     *Creator
+	counter     *Counter
 )
 
 type Config struct {
@@ -47,7 +50,13 @@ type ServerConfig struct {
 func init() {
 
 	flag.StringVar(&configFile, "c", "default.conf", "configuration file.")
+	flag.BoolVar(&showVersion, "v", false, "show current version.")
 	flag.Parse()
+	//Show Version
+	if showVersion {
+		fmt.Printf("Current version: %s", VERSION)
+		os.Exit(0)
+	}
 	//Default Value
 	config = &Config{
 		ServerConfig{
@@ -305,6 +314,9 @@ func main() {
 		}
 	})
 	log.Println("Server is listen on", config.Listen)
-	r.Run(config.Listen)
+	err := r.Run(config.Listen)
+	if err != nil {
+		fmt.Printf("Start Server Failed, : %v", err)
+	}
 
 }
