@@ -18,7 +18,7 @@
 - 二维码数据预生成，提升请求响应时延
 - 内置缓存，极简部署
 
-###安装
+### 安装
 ```bash
 # 将文件上传至服务器
 # 解压文件
@@ -34,7 +34,7 @@ mv /opt/default.conf /etc/fast-qrcode/default.conf
 chmod +x /opt/fast-qrcode
 ```
 
-###创建Service文件
+### 创建Service文件
 ```bash
 vim /etc/systemd/system/fast-qrcode.service
 
@@ -60,7 +60,7 @@ WantedBy=multi-user.target
 
 > 设置自启：systemctl enable fast-qrcode
 
-###接口说明
+### 接口说明
 
 #### 1. 测量接口
 ```GET /actuator/:metric```
