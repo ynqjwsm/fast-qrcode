@@ -31,9 +31,10 @@ jobs:
         CGO_ENABLED=0
         GOOS=${{ matrix.os }}
         GOARCH=${{ matrix.arch }}
+        rm -rf fast-qrcode*
         go build -ldflags "-s -w -extldflags -static -extldflags -static" ./...
         tar -czvf fast-qrcode_$APP_VERSION_${{ matrix.os }}_${{ matrix.arch }}.tar.gz fast-qrcode* default.conf
-        rm -rf fast-qrcode fast-qrcode.exe
+        ls -al
         echo "::set-output name=status::success"
       env:
         APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
