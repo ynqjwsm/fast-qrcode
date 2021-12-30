@@ -14,6 +14,10 @@
   </a>
 </p>
 
+### 特点
+- 二维码数据预生成，提升请求响应时延
+- 内置缓存，极简部署
+
 ###安装
 ```bash
 # 将文件上传至服务器
@@ -80,6 +84,8 @@ metric取值
 
 ```OverwriteCount``` indicates the number of times entries have been overriden.
 
+```r``` 返回值: ```0``` 正常，```-1``` 异常
+
 ```json
 {
   "EntryCount": 272,                          
@@ -104,6 +110,6 @@ metric取值
 用于测量服务存活状态，正常返回值：
 ```json
 {
-	"message": "pong"
+  "message": "pong"
 }
 ```
