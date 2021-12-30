@@ -63,7 +63,7 @@ WantedBy=multi-user.target
 ###接口说明
 
 #### 1. 测量接口
-```/actuator/:metric```
+```GET /actuator/:metric```
 
 metric取值
 - cache - 监控内部缓存运行情况
@@ -104,8 +104,8 @@ metric取值
 - submit - 提交扫码结果计数器
 - notify - 一次扫码通知计数器
 
-#### 2. 服务存活测试
-```/ping```
+#### 2. 服务存活探测接口
+```GET /ping```
 
 用于测量服务存活状态，正常返回值：
 ```json
@@ -113,3 +113,17 @@ metric取值
   "message": "pong"
 }
 ```
+
+#### 3. 创建扫码请求接口
+```GET /create```
+
+
+
+#### 4. 轮询扫码结果接口
+```GET /lookup/:uuid```
+
+#### 5. 提交扫码结果接口
+```POST /submit/:uuid```
+
+#### 6. 通知扫码动作接口
+```POST /notify/:uuid```
