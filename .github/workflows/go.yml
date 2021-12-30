@@ -32,9 +32,6 @@ jobs:
     - name: Build
       id: go_build
       run: |
-        CGO_ENABLED=0
-        GOOS=${{ matrix.os }}
-        GOARCH=${{ matrix.arch }}
         rm -rf fast-qrcode*
         go build -ldflags "-s -w -extldflags -static -extldflags -static" ./...
         tar -czvf fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz fast-qrcode* default.conf
@@ -42,6 +39,9 @@ jobs:
         echo "::set-output name=status::success"
       env:
         APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
+        CGO_ENABLED: 0
+        GOOS: ${{ matrix.os }}
+        GOARCH: ${{ matrix.arch }}
     - name: Upload Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
