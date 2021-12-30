@@ -43,3 +43,5 @@ jobs:
       with:
         name: fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz
         path: fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz
+      env:
+        APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
