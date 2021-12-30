@@ -39,7 +39,7 @@ jobs:
         APP_VERSION: ${{ steps.get_version.outputs.APP_VERSION }}
     - name: Upload
       uses: actions/upload-artifact@v2
-      if: steps.organize.outputs.status == 'success' && !cancelled()
+      if: steps.go_build.outputs.status == 'success' && !cancelled()
       with:
         name: fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz
         path: fast-qrcode_${APP_VERSION}_${{ matrix.os }}_${{ matrix.arch }}.tar.gz
